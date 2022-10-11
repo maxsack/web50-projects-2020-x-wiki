@@ -1,7 +1,15 @@
 from django.shortcuts import render
+import markdown
 
 from . import util
 
+def markdownconverter(title):
+    md = util.get_entry(title)
+    markdowner = markdown.Markdown()
+    if md == None:
+        return None
+    else:
+        return markdowner.convert(md)
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
