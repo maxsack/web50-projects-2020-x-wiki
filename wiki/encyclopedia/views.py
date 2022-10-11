@@ -28,3 +28,15 @@ def entry(request, title):
             "title": title,
             "content": converted_html
         })
+
+def search(request):
+    if request.method == "POST":
+        searchentry = request.POST['q']
+        converted_html = markdownconverter(searchentry)
+        if converted_html is not None:
+            return render(request,"encyclopedia/entry.html", {
+                "title": searchentry,
+                "content": converted_html
+            })
+        else:
+            return render(request, "encyclopedia/searchresult.html")
