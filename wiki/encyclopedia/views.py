@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 import markdown
 
@@ -16,3 +17,14 @@ def index(request):
         "entries": util.list_entries()
     })
 
+def entry(request, title):
+    converted_html = markdownconverter(title)
+    if converted_html == None:
+            return render(request, "encyclopedia/error.html", {
+                "message": "There is no matching entry available!"
+            })
+    else:
+        return render(request,"encyclopedia/entry.html", {
+            "title": title,
+            "content": converted_html
+        })
