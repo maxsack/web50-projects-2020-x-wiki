@@ -42,8 +42,8 @@ def search(request):
             entries = util.list_entries()
             suggestedentries = []
             for entry in entries:
-                if query.upper() in entry.upper():
+                if query.lower() in entry.lower():
                     suggestedentries.append(entry)
-                return render(request, "encyclopedia/search.html", {
-                    "recommendation": suggestedentries
-                })
+            return render(request, "encyclopedia/search.html", {
+                "recommendation": suggestedentries
+            })
