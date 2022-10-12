@@ -66,3 +66,6 @@ def newpage(request):
             "title": title,
             "content": converted_html
         })
+
+def editpage(request):
+    return
