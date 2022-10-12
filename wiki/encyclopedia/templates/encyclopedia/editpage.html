@@ -11,9 +11,9 @@
         {% csrf_token %}
         <h4><label for="title">Title:</label></h4>
         <!-- add style for input!! margin-bottom, width -->
-        <input id="title" name="title" value="{{ title }}"> 
+        <input style="margin-bottom: 30px;" name="title" value="{{ title }}"> 
         <br><h4><label for="body">Markdown Content:</label></h4>
-        <textarea id="body" name="body">{{ content }}</textarea>
+        <textarea style="height: 300px;" name="body">{{ content }}</textarea>
         <!-- add style for submit btn!! color etc -->
         <br><input class="btn btn-primary" type="submit" value="save">
     </form>
