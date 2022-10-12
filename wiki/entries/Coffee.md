@@ -1,1 +1,0 @@
-Coffee is a hot drink which contains caffeine.
