@@ -77,3 +77,9 @@ def editpage(request):
         })
     else:
         return
+
+def saveedit(request):
+    if request.method == "POST":
+        return
+    else:
+        return
