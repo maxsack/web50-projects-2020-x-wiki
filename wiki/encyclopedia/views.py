@@ -31,18 +31,18 @@ def entry(request, title):
 
 def search(request):
     if request.method == "POST":
-        searchedentry = request.POST['q']
-        converted_html = markdownconverter(searchedentry)
+        query = request.POST['q']
+        converted_html = markdownconverter(query)
         if converted_html is not None:
             return render(request,"encyclopedia/entry.html", {
-                "title": searchedentry,
+                "title": query,
                 "content": converted_html
             })
         else:
+            entries = util.list_entries()
             suggestedentries = []
-            listedentries = util.list_entries()
-            for entry in listedentries:
-                if searchedentry.lower() in entry.lower():
+            for entry in entries:
+                if query.upper() in entry.upper():
                     suggestedentries.append(entry)
                 return render(request, "encyclopedia/search.html", {
                     "recommendation": suggestedentries
