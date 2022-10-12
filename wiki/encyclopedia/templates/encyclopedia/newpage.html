@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>New Entry</h1>
+
+    <p><label for="title">Title:</label></p>
+    <textarea id="title" name="title" rows="2" cols="10">
+        <input name="newtitle" placeholder="create a title for your entry">
+    </textarea>
+
+    <input type="submit" value="submit" >
+
+{% endblock %}
