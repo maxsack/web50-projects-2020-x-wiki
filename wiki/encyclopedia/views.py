@@ -93,7 +93,10 @@ def saveedit(request):
         return
 
 def randompage(request):
-    if request.method == "POST":
-        return
-    else:
-        return
+    entries = util.list_entries()
+    randomentry = random.choice(entries)
+    converted_html = markdownconverter(randomentry)
+    return render(request, "encyclopedia/entry.html", {
+        "title": randomentry,
+        "content": converted_html
+    })
