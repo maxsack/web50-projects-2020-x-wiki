@@ -80,6 +80,13 @@ def editpage(request):
 
 def saveedit(request):
     if request.method == "POST":
-        return
+        title = request.POST['title']
+        content = request.POST['body']
+        util.save_entry(title, content)
+        converted_html = markdownconverter(title)
+        return render(request, "encyclopedia/entry.html", {
+            "title": title,
+            "content": converted_html
+        })
     else:
         return
