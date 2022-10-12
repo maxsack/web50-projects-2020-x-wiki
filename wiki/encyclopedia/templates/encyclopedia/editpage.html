@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>New Entry</h1>
+
+    <form action="{% url 'newpage' %}" method="POST">
+        {% csrf_token %}
+        <h4><label for="title">Title:</label></h4>
+        <!-- add style for input!! margin-bottom, width -->
+        <input id="title" name="title" value="{{ title }}"> 
+        <br><h4><label for="body">Markdown Content:</label></h4>
+        <textarea id="body" name="body" value="{{ body_content }}"></textarea>
+        <!-- add style for submit btn!! color etc -->
+        <br><input class="btn btn-primary" type="submit" value="save">
+    </form>
+
+{% endblock %}
