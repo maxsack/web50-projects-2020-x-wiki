@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 import markdown
+import random
 
 from . import util
 
@@ -88,5 +89,11 @@ def saveedit(request):
             "title": title,
             "content": converted_html
         })
+    else:
+        return
+
+def randompage(request):
+    if request.method == "POST":
+        return
     else:
         return
